@@ -49,7 +49,7 @@ We recommend to follow the next step by step process in order to avoid adding th
 5. Run all the checks: `./gradlew check`. This will do some checks that you can perform with isolated commands:
     1. [Klint](https://ktlint.github.io/) using [Spotless](https://github.com/diffplug/spotless): `./gradlew spotlessCheck`. If you want to fix style issues automatically: `./gradlew spotlessApply`.
     2. [Kotlin test](https://kotlinlang.org/api/latest/kotlin.test/): `./gradlew test`.
-6. To just run the project execute: `./gradlew run`
+6. To just run the project execute: `./gradlew run` or `./gradlew bootRun`
 7. Start coding!
 
 ## 👌 Helpful resources
@@ -74,21 +74,3 @@ Publishing this package we are committing ourselves to the following code qualit
 - ✅ **Tests** as documentation and usage examples
 - 📖 **Well documented ReadMe** showing how to install and use
 - ⚖️ **License favoring Open Source** and collaboration
-
-## 🔀 Related skeleton templates
-
-Opinionated TypeScript skeletons ready for different purposes:
-
-- [🔷🌱 TypeScript Basic Skeleton](https://github.com/CodelyTV/typescript-basic-skeleton)
-- [🔷🕸️ TypeScript Web Skeleton](https://github.com/CodelyTV/typescript-web-skeleton)
-- [🔷🌍 TypeScript API Skeleton](https://github.com/CodelyTV/typescript-api-skeleton)
-- [🔷✨ TypeScript DDD Skeleton](https://github.com/CodelyTV/typescript-ddd-skeleton)
-
-This very same basic skeleton philosophy implemented in other programming languages:
-
-- [✨ JavaScript Basic Skeleton](https://github.com/CodelyTV/javascript-basic-skeleton)
-- [☕ Java Basic Skeleton](https://github.com/CodelyTV/java-basic-skeleton)
-- [📍 Kotlin Basic Skeleton](https://github.com/CodelyTV/kotlin-basic-skeleton)
-- [🧬 Scala Basic Skeleton](https://github.com/CodelyTV/scala-basic-skeleton)
-- [🦈 C# Basic Skeleton](https://github.com/CodelyTV/csharp-basic-skeleton)
-- [🐘 PHP Basic Skeleton](https://github.com/CodelyTV/php-basic-skeleton)
