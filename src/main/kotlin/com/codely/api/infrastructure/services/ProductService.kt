@@ -4,11 +4,11 @@ import org.springframework.stereotype.Service
 
 @Service
 class ProductService {
-    /*
+
     private val webClient = WebClient.builder()
             .baseUrl("https://dummyjson.com")
             .build()
-    
+    /*
     fun getAllProducts(): Mono<List<Product>> {
         return webClient.get()
                 .uri("/products")
