@@ -1,51 +1,41 @@
 package com.codely.api.infrastructure.services
 
+import ProductList
+import ProductReturn
+import com.codely.api.infrastructure.helper.ProductHelper
 import org.springframework.stereotype.Service
+import com.google.gson.Gson
+
 
 @Service
-class ProductService {
+class ProductService(private val productHelper: ProductHelper) {
 
-    private val webClient = WebClient.builder()
-            .baseUrl("https://dummyjson.com")
-            .build()
-    /*
-    fun getAllProducts(): Mono<List<Product>> {
-        return webClient.get()
-                .uri("/products")
-                .retrieve()
-                .bodyToFlux(Product::class.java)
-                .collectList()
-    }
+    fun getAllProducts(): ProductReturn {
+        val gson = Gson()
+        val productList = gson.fromJson(productHelper.getAllProducts(), ProductList::class.java)
 
-    fun getProductWithHighestPrice(products: List<Product>): Mono<Product> {
-        return Flux.fromIterable(products)
-                .reduce { p1, p2 -> if (p1.price > p2.price) p1 else p2 }
-    }
+        val maxPriceProduct = productList.products.maxByOrNull { it.price }
+        println("Producto con el precio más alto: $maxPriceProduct")
 
-    fun getProductWithLowestPrice(products: List<Product>): Mono<Product> {
-        return Flux.fromIterable(products)
-                .reduce { p1, p2 -> if (p1.price < p2.price) p1 else p2 }
-    }
+        val minPriceProduct = productList.products.minByOrNull { it.price }
+        println("Producto con el precio más bajo: $minPriceProduct")
 
-    fun getAveragePrice(products: List<Product>): Mono<Double> {
-        return Flux.fromIterable(products)
-                .map { it.price }
-                .reduce { p1, p2 -> p1 + p2 }
-                .map { totalPrice -> totalPrice / products.size }
-    }
+        val averagePrice = productList.products.map { it.price }.average()
+        println("Precio medio de los productos: $averagePrice")
 
-    fun getNumberOfProductsByBrand(products: List<Product>): Mono<Map<String, Int>> {
-        return Flux.fromIterable(products)
-                .groupBy { it.brand }
-                .flatMap { group -> group.count().map { count -> Tuples.of(group.key(), count) } }
-                .collectMap(Tuple2<String, Int>::t1, Tuple2<String, Int>::t2)
-    }
+        val productsByBrand = productList.products.groupBy { it.brand }
+        for ((brand, products) in productsByBrand) {
+            println("Número de productos de la marca $brand: ${products.size}")
+        }
 
-    fun getNumberOfProductsByCategory(products: List<Product>): Mono<Map<String, Int>> {
-        return Flux.fromIterable(products)
-                .groupBy { it.category }
-                .flatMap { group -> group.count().map { count -> Tuples.of(group.key(), count) } }
-                .collectMap(Tuple2<String, Int>::t1, Tuple2<String, Int>::t2)
+        val productsByCategory = productList.products.groupBy { it.category }
+        for ((category, products) in productsByCategory) {
+            println("Número de productos de la categoría $category: ${products.size}")
+        }
+
+        val result: ProductReturn = ProductReturn(maxPriceProduct, minPriceProduct, averagePrice, productsByBrand,
+            productsByCategory)
+
+        return result;
     }
-    */
 }
