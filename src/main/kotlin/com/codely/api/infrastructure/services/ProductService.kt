@@ -5,6 +5,7 @@ import ProductReturn
 import com.codely.api.infrastructure.helper.ProductHelper
 import org.springframework.stereotype.Service
 import com.google.gson.Gson
+import rawData
 
 
 @Service
@@ -12,7 +13,10 @@ class ProductService(private val productHelper: ProductHelper) {
 
     fun getAllProducts(): ProductReturn {
         val gson = Gson()
-        val productList = gson.fromJson(productHelper.getAllProducts(), ProductList::class.java)
+        val test = productHelper.getAllProducts()
+        val rawData = gson.fromJson(test, rawData::class.java)
+
+        val productList = gson.fromJson(test, ProductList::class.java)
 
         val maxPriceProduct = productList.products.maxByOrNull { it.price }
         println("Producto con el precio más alto: $maxPriceProduct")
