@@ -5,7 +5,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import org.springframework.stereotype.Repository
 import java.net.URL
-import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 @Repository
 class ProductHelper {
@@ -13,7 +12,7 @@ class ProductHelper {
         var skip = 0
         var products = "{\"data\": ["
 
-        while (skip != 100) {
+        while (skip <= 100) {
             val result = async(Dispatchers.IO) {
                 URL("https://dummyjson.com/products?skip=" + skip).readText()
             }
