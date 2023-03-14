@@ -1,5 +1,6 @@
 package com.codely.shared
 
+import com.codely.api.infrastructure.docs.SwaggerConfig
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.ComponentScan
