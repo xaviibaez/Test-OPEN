@@ -1,4 +1,9 @@
 data class Cart(
-    val userId: String,
-    val products: List<Product>
+    val id: Int,
+    val products: List<ProductAvailability>,
+    val total:Int,
+    val discountedTotal:Int,
+    val userId:Int,
+    val totalProducts:Int,
+    val totalQuantity:Int,
 )

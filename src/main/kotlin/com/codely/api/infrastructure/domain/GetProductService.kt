@@ -1,4 +1,4 @@
-data class ProductReturn(
+data class GetProductService(
     val maxPriceProduct: Product?,
     val minPriceProduct: Product?,
     val averagePrice: Double,
