@@ -3,6 +3,7 @@ package com.codely.api.infrastructure.controllers
 import GetProductService
 import GetProductServiceUser
 import com.codely.api.infrastructure.services.ImplProductService
+import io.swagger.annotations.ApiOperation
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -19,6 +20,12 @@ class ImplProductController(private val productService: ImplProductService) : Pr
      */
     @GetMapping("/")
     @ResponseBody
+    @ApiOperation("Obtener todos los productos: " +
+            "Producto con el precio más alto\n" +
+            "Producto con el precio más bajo\n" +
+            "Precio medio de los productos\n" +
+            "Número de productos por marca\n" +
+            "Número de productos por categoría")
     override fun getAllProducts(): GetProductService {
         val result: GetProductService
         try {
@@ -38,6 +45,8 @@ class ImplProductController(private val productService: ImplProductService) : Pr
      */
     @GetMapping("/user")
     @ResponseBody
+    @ApiOperation("Obtener todos los productos: Agrupados por el id y la descripción del producto y debe mostrar la cantidad total de productos y el precio total.\n" +
+            "También la media del descuento aplicado para ese producto en todos los carros")
     override fun getAllProductsPerUser(@RequestParam ids: List<Long>): GetProductServiceUser {
         val result: GetProductServiceUser
         try {
