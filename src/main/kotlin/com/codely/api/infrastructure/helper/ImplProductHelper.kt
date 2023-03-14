@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository
 import java.net.URL
 
 @Repository
-class ImplProductHelper {
+class ImplProductHelper: ProductHelper {
 
     //Formamos los json de respuesta
-    fun getAllProducts() = runBlocking {
+    override fun getAllProducts() = runBlocking {
         var skip = 0
         var products = "{\"data\": ["
 
@@ -27,7 +27,7 @@ class ImplProductHelper {
         return@runBlocking products
     }
 
-    fun getProductsByUser(ids: List<Long>) = runBlocking {
+    override fun getProductsByUser(ids: List<Long>) = runBlocking {
         var products = "{\"data\": ["
 
         for (id in ids) {

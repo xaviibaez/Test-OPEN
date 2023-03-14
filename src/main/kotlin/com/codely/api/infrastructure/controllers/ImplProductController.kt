@@ -5,7 +5,6 @@ import GetProductServiceUser
 import com.codely.api.infrastructure.services.ImplProductService
 import org.springframework.web.bind.annotation.*
 
-//todo: rename IInterface a Interface , Implemented a ImplImplemented
 @RestController
 @RequestMapping("/api/products")
 class ImplProductController(private val productService: ImplProductService) : ProductController {

@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service
 import com.google.gson.Gson
 
 @Service
-class ImplProductService(private val productHelper: ImplProductHelper) {
+class ImplProductService(private val productHelper: ImplProductHelper): ProductService {
 
     val gson = Gson()
     /*
     Todos los tests seran sobre esta capa de servicio.
     Tantos por cada throw KOs y OKs
      */
-    fun getAllProducts(): GetProductService {
+    override fun getAllProducts(): GetProductService {
         val rawData =
             gson.fromJson(productHelper.getAllProducts(), RawDataProduct::class.java) ?: throw Exception("Raw data empty")
 
@@ -59,7 +59,7 @@ class ImplProductService(private val productHelper: ImplProductHelper) {
             productsByCategory
         )
     }
-    fun getProductsByUser(ids: List<Long>): GetProductServiceUser {
+    override fun getProductsByUser(ids: List<Long>): GetProductServiceUser {
         if (ids.isNullOrEmpty())
             throw Exception("ids not provided")
 
